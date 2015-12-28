@@ -1,10 +1,18 @@
 var $container = $('#container');
 var $containerH = $container.height();
 var $containerW = $container.width();
-var divBackground = "gainsboro";
+var divBackground = "white";
 var divColor = "white";
+//buttons
+var $clear = $('.clear');
+var $newGrid = $('.newGrid');
+var $disco = $('.disco');
+var $trail = $('.trail');
+var $darken = $('.darken');
+var $div = $container.find('div');
 
 
+//function to create square divs i x j
 function createDivs(amount)
 {
     var divWidth = ($containerW/amount);
@@ -23,30 +31,68 @@ function createDivs(amount)
             document.getElementById("container").appendChild(div);
         }
     }
-}
-
-//default hover function
-function hover()
-{
     $("div").hover(function()
     {
         $(this).css("background-color", "#FFBD72");
     });
 }
 
-//clear function - change background to default
-function clear(){
-    $container.find('div').css("background", "white");
-}
-
-
+//jquery functions
 $(document).ready(function(){
-    createDivs(40);
-    hover();
+    createDivs(7);
+    $("button").click(function() {      // reset event handlers for the animations when choosing a new type of animation
 
-    function clear(){
-        $container.find('div').css("background", "white");
-    }
+        $container.find('div').unbind();
+
+    });
+    $container.prop('disabled', true);
+    //clear function on click------------->
+    $clear.on("click", function() {
+        $container.find('div').css({
+            "background": "white",
+            "opacity" : "1"
+        });
+    });
+
+    //create newGrid using same function but with user parameters
+    $newGrid.on("click", function(){
+        var size = prompt("How many squares per row would you like to have? (1-100)");
+        while(size<=0 || size>100 || size === null)
+        {
+            size = prompt("How many squares per row would you like to have? (1-100)");
+        }
+        $container.empty();
+        createDivs(size);
+    });
+
+    //disco! use random color for background
+    $disco.on('click',function(){
+        $("div").hover(function()
+        {
+            var color = "#" + Math.random().toString(16).slice(2, 8);
+            $(this).css({
+                "background-color":color,
+                "opacity" : 1
+            });
+        });
+    });
+
+    //leaving trail function
+    $trail.on('click', function(){
+        $container.find('div').mouseenter(function() {
+
+            $(this).fadeTo(100, 0);
+
+        });
+
+        $container.find('div').mouseleave(function() {
+
+            $(this).fadeTo(400, 1);
+
+        });
+
+    });
+
 });
 
 
