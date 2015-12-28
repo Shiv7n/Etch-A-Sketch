@@ -1,0 +1,56 @@
+body
+    background: cornflowerblue
+    nav
+        position: fixed
+        top: 0
+        height: 40px
+        width: 100%
+        background: darken(cornflowerblue, 10%)
+        text-align: center
+        ul
+            vertical-align: middle
+            height: 40px
+            text-align: center
+            margin: 0 auto
+            text-decoration: none
+            li
+                margin-top: 4px
+                padding: 7px 22px 7px 22px
+                background: lighten(cornflowerblue, 3%)
+                border-radius: 3px
+                //border: 1px solid darkslategrey
+                //height: 38px
+                //line-height: 38px
+                vertical-align: middle
+                display: inline-block
+                text-align: center
+                &:hover
+                    background: darken(cornflowerblue, 15%)
+                &:active
+                    background: darken(cornflowerblue, 22%)
+                a
+                    text-decoration: none
+                    color: mintcream
+                    font-family: Helvetica, Arial
+                    font-size: 14px
+                    font-weight: bold
+                    &:hover
+                        color: darken(mintcream, 2%)
+
+    #container
+        background: #a6b7ff
+        text-align: center
+        margin: 50px auto
+        width: 800px
+        height: 800px
+        div
+            display: block
+            float: left
+            outline: 1px solid cornflowerblue
+            border-radius: 7px
+            outline-offset: -1px
+
+html
+    padding: 0
+    margin: 0
+
