@@ -32,10 +32,22 @@ body {
           font-weight: bold; }
           body nav ul li a:hover {
             color: #ebfff5; }
+  body span {
+    display: block;
+    margin: 0 auto;
+    text-align: center; }
+    body span p {
+      color: #CEF0D4;
+      font-family: "Rouge Script", cursive;
+      font-size: 34px;
+      font-weight: normal;
+      line-height: 34px;
+      text-align: center;
+      text-shadow: 1px 1px 2px #082b34; }
   body #container {
     background: #a6b7ff;
     text-align: center;
-    margin: 90px auto;
+    margin: 40px auto;
     width: 800px;
     height: 800px;
     overflow: hidden; }
