@@ -31,68 +31,40 @@ function createDivs(amount)
             document.getElementById("container").appendChild(div);
         }
     }
+    hover();
+}
+
+//newGrid function
+function newGrid(amount)
+{
+    var size = prompt("How many squares would you like to have in row?(1-100)");
+    while(size<=0 || size>100 || size === null)
+    {
+        size = prompt("How many squares would you like to have in row?(1-100)");
+    }
+    $container.find('div').remove();
+    createDivs(size);
+}
+
+//hover function
+function hover(){
     $("div").hover(function()
     {
         $(this).css("background-color", "#FFBD72");
     });
 }
 
+//clear function
+function clear(){
+    $container.find('div').css("background-color", "white");
+    $container.find('div').css("opacity", 1);
+}
+
 //jquery functions
-$(document).ready(function(){
+$(document).ready(function() {
     createDivs(7);
-    $("button").click(function() {      // reset event handlers for the animations when choosing a new type of animation
 
-        $container.find('div').unbind();
-
-    });
-    $container.prop('disabled', true);
-    //clear function on click------------->
-    $clear.on("click", function() {
-        $container.find('div').css({
-            "background": "white",
-            "opacity" : "1"
-        });
-    });
-
-    //create newGrid using same function but with user parameters
-    $newGrid.on("click", function(){
-        var size = prompt("How many squares per row would you like to have? (1-100)");
-        while(size<=0 || size>100 || size === null)
-        {
-            size = prompt("How many squares per row would you like to have? (1-100)");
-        }
-        $container.empty();
-        createDivs(size);
-    });
-
-    //disco! use random color for background
-    $disco.on('click',function(){
-        $("div").hover(function()
-        {
-            var color = "#" + Math.random().toString(16).slice(2, 8);
-            $(this).css({
-                "background-color":color,
-                "opacity" : 1
-            });
-        });
-    });
-
-    //leaving trail function
-    $trail.on('click', function(){
-        $container.find('div').mouseenter(function() {
-
-            $(this).fadeTo(100, 0);
-
-        });
-
-        $container.find('div').mouseleave(function() {
-
-            $(this).fadeTo(400, 1);
-
-        });
-
-    });
+    $clear.on('click', clear);
+    $newGrid.on('click', newGrid);
 
 });
-
-
